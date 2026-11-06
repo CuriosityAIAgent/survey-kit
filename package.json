@@ -1,0 +1,32 @@
+{
+  "name": "survey-kit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Two survey experiences (quiz-style and game-style) with a sample survey, sign-in, a small database and CSV export. A starting point for student projects.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p ${PORT:-3000}",
+    "check": "node e2e/backend-check.mjs && node e2e/kit-check.mjs"
+  },
+  "dependencies": {
+    "next": "^16.3.6",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "zustand": "5.0.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.13",
+    "@types/node": "^22.20.4",
+    "@types/react": "19.1.9",
+    "@types/react-dom": "19.1.7",
+    "postcss": "^8.5.28",
+    "puppeteer-core": "^23.11.1",
+    "tailwindcss": "4.1.13",
+    "typescript": "5.7.3"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* Design tokens for the game-style screens. Change these (and public/kit/preview.css for the quiz-style
+   screens) to rebrand. */
+@theme {
+  --color-ground: #FFFFFF;
+  --color-paper: #F8F7F4;
+  --color-ink: #0D0C0B;
+  --color-ink-2: #262320;
+  --color-muted: #494540;
+  --color-rule: #8C857A;
+  --color-rule-soft: #DDD9D2;
+  --color-navy: #14233B;
+  --color-bronze: #7A3E12;
+  --color-forest: #1F4B3A;
+  --color-night: #0B1424;
+  --color-dawn: #E9D5BB;
+  --color-disabled-bg: #E5E2DC;
+  --color-disabled-ink: #6B6761;
+
+  --font-display: "Bodoni Moda", "Iowan Old Style", Georgia, serif;
+  --font-text: "Source Serif 4", Georgia, serif;
+  --font-ui: "Archivo", Arial, sans-serif;
+}
+
+html, body { height: 100%; }
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+@layer components {
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.choice {
+  font-family: var(--font-ui);
+  min-height: 44px;
+  padding: 10px 16px;
+  font-size: 15px;
+  border-radius: 2px;
+  border: 1px solid var(--color-rule);
+  background: var(--color-ground);
+  color: var(--color-ink);
+  text-align: left;
+  transition: background-color .12s ease, border-color .12s ease, color .12s ease;
+}
+.choice:hover { border-color: var(--color-ink); }
+.choice[aria-pressed="true"], .choice[data-on="true"] {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-ground);
+}
+
+.btn {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  min-height: 44px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 2px;
+  background: var(--color-ink);
+  color: var(--color-ground);
+}
+.btn:disabled {
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-ink);
+  cursor: not-allowed;
+}
+.btn-quiet {
+  font-family: var(--font-ui);
+  min-height: 44px;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 2px;
+  border: 1px solid var(--color-rule);
+  background: transparent;
+  color: var(--color-ink);
+}
+}
+
+h1[tabindex="-1"]:focus, h1[tabindex="-1"]:focus-visible { outline: none; }
+
+:where(button, a, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@layer components {
+.field {
+  font-family: var(--font-text);
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 2px;
+  border: 1px solid var(--color-rule);
+  background: var(--color-ground);
+  color: var(--color-ink);
+}
+.field::placeholder { color: var(--color-disabled-ink); }
+}
+
+.hide-scroll::-webkit-scrollbar { display: none; }
+.hide-scroll { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-property: opacity, background-color, border-color, color, fill, stroke !important;
+    transition-duration: .15s !important;
+  }
+}
+
+html[data-skin="survey"] body { background: var(--color-paper); }
+html[data-skin="survey"] .panel {
+  background: var(--color-paper);
+  border: 0;
+  border-radius: 0;
+}
+html[data-skin="survey"] .panel { position: relative; z-index: 10; }
+html[data-skin="survey"] .choice:not([aria-pressed="true"]):not([data-on="true"]) {
+  background: var(--color-ground);
+}
+
+.halo {
+    background: linear-gradient(to bottom, var(--halo, #F8F7F4) 0, var(--halo, #F8F7F4) 80%, transparent 100%);
+}
+.halo-text { text-shadow: 0 0 3px var(--halo, #F8F7F4), 0 0 6px var(--halo, #F8F7F4); }

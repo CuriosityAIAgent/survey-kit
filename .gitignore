@@ -1,0 +1,13 @@
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+# local settings hold your password and secret: never commit them
+.env*
+!.env.example
+# the database: answers people gave; never commit it
+data/*
+!data/README.md
+*.db
+*.db-*
+.DS_Store
